@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import apiClient from "../api/api";
 import PokemonCard from "./PokeCard";
+import ModalDetail from "./ModalDetail";
 
 const PokemonList = () => {
   const [pokemons, setPokemons] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
 
   useEffect(() => {
     const fetchPokemons = async () => {
@@ -24,11 +26,18 @@ const PokemonList = () => {
   const handleNextPage = () =>
     setPage((prev) => Math.min(prev + 1, totalPages));
 
+  const openModal = (pokemon) => setSelectedPokemon(pokemon);
+  const closeModal = () => setSelectedPokemon(null);
+
   return (
     <div className="max-w-7xl mx-auto px-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-8">
         {pokemons.map((pokemon) => (
-          <PokemonCard key={pokemon.name} pokemon={pokemon} />
+          <PokemonCard
+            key={pokemon.name}
+            pokemon={pokemon}
+            onClick={() => openModal(pokemon)}
+          />
         ))}
       </div>
       <div className="flex justify-between items-center mt-8">
@@ -50,6 +59,8 @@ const PokemonList = () => {
           Next
         </button>
       </div>
+
+      <ModalDetail selectedPokemon={selectedPokemon} closeModal={closeModal} />
     </div>
   );
 };
