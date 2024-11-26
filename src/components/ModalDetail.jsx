@@ -27,16 +27,19 @@ const ModalDetail = ({ selectedPokemon, closeModal }) => {
               <strong>Abilities:</strong> {selectedPokemon.abilities}
             </p>
           </div>
-          <div className="flex justify-center space-x-4 mt-4">
+          <div
+            className="flex flex-wrap justify-center gap-4 mt-6"
+            style={{ rowGap: "1rem" }}
+          >
             <img
               src={selectedPokemon.image_front}
               alt={`${selectedPokemon.name} front`}
-              className="w-24 h-24 object-contain rounded-full shadow-md"
+              className="w-32 h-32 sm:w-40 sm:h-40 object-contain rounded-full shadow-md"
             />
             <img
               src={selectedPokemon.image_back}
               alt={`${selectedPokemon.name} back`}
-              className="w-24 h-24 object-contain rounded-full shadow-md"
+              className="w-32 h-32 sm:w-40 sm:h-40 object-contain rounded-full shadow-md"
             />
           </div>
           <button
