@@ -3,10 +3,13 @@ import PokemonList from "./components/PokemonList";
 
 function App() {
   return (
-    <div className="bg-gray-100 min-h-screen p-4">
-      <h1 className="text-center text-3xl font-bold text-red-600">
-        Pokémon List
-      </h1>
+    <div
+      className="min-h-screen p-4"
+      style={{
+        background: "linear-gradient(to bottom, #e5e7eb, #374151)", // Gris claro a gris oscuro
+        minHeight: "100vh",
+      }}
+    >
       <PokemonList />
     </div>
   );
