@@ -12,7 +12,7 @@ const CatalogsProvider = ({ children }) => {
     const fetchPokemons = async () => {
       try {
         const response = await apiClient.get(`/get-abilities`);
-        setAbilities(response.data.results);
+        setAbilities(response.data.abilities);
       } catch (error) {
         console.error("Error fetching Pokémon data:", error);
       }

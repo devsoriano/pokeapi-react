@@ -1,7 +1,36 @@
 /* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
 import Modal from "react-modal";
+import useCatalogs from "../hooks/useCatalogs";
 
 const ModalDetail = ({ selectedPokemon, closeModal }) => {
+  const { abilities } = useCatalogs();
+  const [matchedAbilities, setMatchedAbilities] = useState([]);
+  const [visibleDetails, setVisibleDetails] = useState({});
+
+  useEffect(() => {
+    if (selectedPokemon) {
+      const pokemonAbilities = selectedPokemon.abilities.split(",");
+      const matched = abilities.filter((ability) =>
+        pokemonAbilities.includes(ability.name)
+      );
+      setMatchedAbilities(matched);
+
+      const initialVisibility = {};
+      matched.forEach((ability) => {
+        initialVisibility[ability.name] = false;
+      });
+      setVisibleDetails(initialVisibility);
+    }
+  }, [abilities, selectedPokemon]);
+
+  const toggleDetails = (abilityName) => {
+    setVisibleDetails((prev) => ({
+      ...prev,
+      [abilityName]: !prev[abilityName],
+    }));
+  };
+
   return (
     <Modal
       isOpen={!!selectedPokemon}
@@ -24,8 +53,45 @@ const ModalDetail = ({ selectedPokemon, closeModal }) => {
               <strong>Weight:</strong> {selectedPokemon.weight}
             </p>
             <p>
-              <strong>Abilities:</strong> {selectedPokemon.abilities}
+              <strong>Abilities:</strong>
             </p>
+            <div className="space-y-4">
+              {matchedAbilities.map((ability) => (
+                <div
+                  key={ability.name}
+                  className={`p-4 border border-gray-300 rounded-lg shadow-sm transition-all duration-300 ${
+                    visibleDetails[ability.name] ? "bg-gray-100" : "bg-white"
+                  }`}
+                  style={{ maxWidth: "100%" }}
+                >
+                  <div className="flex justify-between items-center">
+                    <span className="font-semibold capitalize text-gray-700">
+                      {ability.name}
+                    </span>
+                    <button
+                      onClick={() => toggleDetails(ability.name)}
+                      className="text-blue-500 hover:text-blue-600"
+                    >
+                      {visibleDetails[ability.name]
+                        ? "Ocultar info"
+                        : "Ver info"}
+                    </button>
+                  </div>
+                  {visibleDetails[ability.name] && (
+                    <div className="mt-2 text-gray-600">
+                      <p>
+                        <strong>Descripción:</strong>{" "}
+                        {ability.description || "N/A"}
+                      </p>
+                      <p>
+                        <strong>Efecto breve:</strong>{" "}
+                        {ability.short_effect || "N/A"}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
           <div
             className="flex flex-wrap justify-center gap-4 mt-6"
@@ -46,7 +112,7 @@ const ModalDetail = ({ selectedPokemon, closeModal }) => {
             onClick={closeModal}
             className="mt-6 bg-red-500 text-white px-4 py-2 rounded-full shadow-md hover:bg-red-600 transition-transform transform hover:scale-105 block mx-auto"
           >
-            Cerrar
+            Close
           </button>
         </div>
       )}
