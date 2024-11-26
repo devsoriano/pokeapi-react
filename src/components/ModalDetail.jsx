@@ -36,12 +36,20 @@ const ModalDetail = ({ selectedPokemon, closeModal }) => {
       isOpen={!!selectedPokemon}
       onRequestClose={closeModal}
       contentLabel="Pokemon Details"
-      className="bg-gradient-to-br from-yellow-100 to-white p-6 rounded-2xl shadow-xl max-w-lg mx-auto mt-20 border-4 border-yellow-500"
+      className="bg-gradient-to-br from-yellow-100 to-white p-6 rounded-2xl shadow-xl max-w-lg mx-auto mt-20 border-4 border-yellow-500 relative"
       overlayClassName="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center"
       ariaHideApp={false}
     >
       {selectedPokemon && (
         <div>
+          {/* Botón de cerrar en la parte superior derecha */}
+          <button
+            onClick={closeModal}
+            className="absolute top-3 right-3 bg-red-500 text-white w-8 h-8 flex items-center justify-center rounded-full shadow-md hover:bg-red-600"
+            aria-label="Close"
+          >
+            &times;
+          </button>
           <h2 className="text-2xl font-bold mb-4 text-center text-yellow-600 capitalize">
             {selectedPokemon.name}
           </h2>
@@ -108,12 +116,6 @@ const ModalDetail = ({ selectedPokemon, closeModal }) => {
               className="w-32 h-32 sm:w-40 sm:h-40 object-contain rounded-full shadow-md"
             />
           </div>
-          <button
-            onClick={closeModal}
-            className="mt-6 bg-red-500 text-white px-4 py-2 rounded-full shadow-md hover:bg-red-600 transition-transform transform hover:scale-105 block mx-auto"
-          >
-            Close
-          </button>
         </div>
       )}
     </Modal>
