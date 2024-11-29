@@ -16,7 +16,6 @@ export const useLoadPokemons = () => {
       setIsLoading(true);
       try {
         const response = await apiClient.get(`/pokemons/?page=${page}`);
-        console.log({ response });
         setPokemons(response.results);
         setFilteredPokemons(response.results);
         setTotalPages(response.total_pages);
