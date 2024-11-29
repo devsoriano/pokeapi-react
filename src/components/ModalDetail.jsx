@@ -43,7 +43,7 @@ const ModalDetail = ({ selectedPokemon, closeModal }) => {
       onRequestClose={closeModal}
       contentLabel="Pokemon Details"
       className="bg-gradient-to-br from-gray-100 to-white p-6 rounded-2xl shadow-xl max-w-xl w-full max-h-[80vh] mx-auto mt-20 overflow-y-auto border border-gray-300 relative"
-      overlayClassName="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center"
+      overlayClassName="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center backdrop-blur-sm"
       ariaHideApp={false}
     >
       {selectedPokemon && (
