@@ -34,7 +34,7 @@ const PokemonList = () => {
         </div>
 
         {/* Lista de Pokémon */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-8 bg-gradient-to-b from-white to-gray-100 p-4 rounded-lg shadow-md">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-2 bg-gradient-to-b from-white to-gray-100 p-4 rounded-lg shadow-md">
           {filteredPokemons.map((pokemon) => (
             <PokemonCard
               key={pokemon.name}
@@ -45,7 +45,7 @@ const PokemonList = () => {
         </div>
 
         {/* Paginación */}
-        <div className="flex justify-between items-center mt-8">
+        <div className="flex justify-between items-center my-8">
           <button
             onClick={handlePrevPage}
             className={`bg-red-500 text-white px-6 py-2 rounded-lg shadow-md transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-red-600 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:transform-none`}
