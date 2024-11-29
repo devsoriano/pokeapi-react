@@ -42,19 +42,13 @@ const ModalDetail = ({ selectedPokemon, closeModal }) => {
       isOpen={!!selectedPokemon}
       onRequestClose={closeModal}
       contentLabel="Pokemon Details"
-      className="bg-gray-100 p-6 rounded-2xl shadow-xl max-w-lg mx-auto border-4 border-gray-300 relative overflow-y-auto"
+      className="bg-gradient-to-br from-gray-100 to-white p-6 rounded-2xl shadow-xl max-w-xl w-full max-h-[80vh] mx-auto mt-20 overflow-y-auto border border-gray-300 relative"
       overlayClassName="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center"
-      style={{
-        content: {
-          maxHeight: "90vh",
-          overflowY: "auto",
-        },
-      }}
       ariaHideApp={false}
     >
       {selectedPokemon && (
         <div>
-          {/* Botón de cerrar en la parte superior derecha */}
+          {/* Botón de cerrar */}
           <button
             onClick={closeModal}
             className="absolute top-3 right-3 bg-red-500 text-white w-8 h-8 flex items-center justify-center rounded-full shadow-md hover:bg-red-600"
@@ -62,10 +56,10 @@ const ModalDetail = ({ selectedPokemon, closeModal }) => {
           >
             &times;
           </button>
-          <h2 className="text-2xl font-bold mb-4 text-center text-gray-700 capitalize">
+          <h2 className="text-2xl font-bold mb-4 text-center text-gray-800 capitalize">
             {selectedPokemon.name}
           </h2>
-          <div className="text-gray-900 space-y-2">
+          <div className="text-gray-700 space-y-2">
             <p>
               <strong>Types:</strong> {selectedPokemon.types}
             </p>
@@ -80,7 +74,7 @@ const ModalDetail = ({ selectedPokemon, closeModal }) => {
                 <div
                   key={ability.name}
                   className={`p-4 border border-gray-300 rounded-lg shadow-sm transition-all duration-300 ${
-                    visibleDetails[ability.name] ? "bg-gray-200" : "bg-white"
+                    visibleDetails[ability.name] ? "bg-gray-100" : "bg-white"
                   }`}
                 >
                   <div className="flex justify-between items-center">
@@ -112,8 +106,9 @@ const ModalDetail = ({ selectedPokemon, closeModal }) => {
               ))}
             </div>
           </div>
+          {/* Contenedor de imágenes */}
           <div
-            className="flex flex-wrap justify-center gap-4 mt-6"
+            className="flex flex-wrap justify-around gap-4 mt-6"
             style={{ rowGap: "1rem" }}
           >
             <img
