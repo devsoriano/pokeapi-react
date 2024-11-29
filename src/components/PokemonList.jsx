@@ -21,15 +21,7 @@ const PokemonList = () => {
   return (
     <>
       {isLoading && <Loader />}
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Encabezado */}
-        <h1
-          className="mt-6 text-4xl sm:text-5xl md:text-6xl font-bold text-gray-700 text-center drop-shadow-md"
-          style={{ fontFamily: "'Bangers', cursive" }}
-        >
-          Pokédex Adventure
-        </h1>
-
+      <>
         {/* Barra de búsqueda */}
         <div className="flex justify-center mt-8">
           <input
@@ -78,7 +70,7 @@ const PokemonList = () => {
           selectedPokemon={selectedPokemon}
           closeModal={closeModal}
         />
-      </div>
+      </>
     </>
   );
 };
