@@ -42,8 +42,14 @@ const ModalDetail = ({ selectedPokemon, closeModal }) => {
       isOpen={!!selectedPokemon}
       onRequestClose={closeModal}
       contentLabel="Pokemon Details"
-      className="bg-gradient-to-br from-yellow-100 to-white p-6 rounded-2xl shadow-xl max-w-lg mx-auto mt-20 border-4 border-yellow-500 relative"
+      className="bg-gray-100 p-6 rounded-2xl shadow-xl max-w-lg mx-auto border-4 border-gray-300 relative overflow-y-auto"
       overlayClassName="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center"
+      style={{
+        content: {
+          maxHeight: "90vh",
+          overflowY: "auto",
+        },
+      }}
       ariaHideApp={false}
     >
       {selectedPokemon && (
@@ -56,7 +62,7 @@ const ModalDetail = ({ selectedPokemon, closeModal }) => {
           >
             &times;
           </button>
-          <h2 className="text-2xl font-bold mb-4 text-center text-yellow-600 capitalize">
+          <h2 className="text-2xl font-bold mb-4 text-center text-gray-700 capitalize">
             {selectedPokemon.name}
           </h2>
           <div className="text-gray-900 space-y-2">
@@ -74,9 +80,8 @@ const ModalDetail = ({ selectedPokemon, closeModal }) => {
                 <div
                   key={ability.name}
                   className={`p-4 border border-gray-300 rounded-lg shadow-sm transition-all duration-300 ${
-                    visibleDetails[ability.name] ? "bg-gray-100" : "bg-white"
+                    visibleDetails[ability.name] ? "bg-gray-200" : "bg-white"
                   }`}
-                  style={{ maxWidth: "100%" }}
                 >
                   <div className="flex justify-between items-center">
                     <span className="font-semibold capitalize text-gray-700">

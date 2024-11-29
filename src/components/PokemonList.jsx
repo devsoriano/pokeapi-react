@@ -57,33 +57,28 @@ const PokemonList = () => {
   return (
     <div className="max-w-7xl mx-auto px-4">
       {/* Encabezado */}
-      <div className="bg-gradient-to-r from-yellow-300 via-red-200 to-yellow-300 p-4 rounded-lg shadow-lg">
+      <div className="bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 p-6 rounded-lg shadow-lg mb-6">
         <h1
-          className="text-5xl font-bold text-red-600 text-center"
+          className="text-6xl font-bold text-gray-700 text-center drop-shadow-md"
           style={{ fontFamily: "'Bangers', cursive" }}
         >
-          Pokémon Collection
+          Pokédex Adventure
         </h1>
       </div>
+
       {/* Barra de búsqueda */}
       <div className="flex justify-center mt-8">
         <input
           type="text"
           value={searchTerm}
           onChange={handleSearch}
-          placeholder="Busca pokemón por nombre"
-          className="w-full sm:w-1/2 px-4 py-2 rounded-lg shadow-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500"
-          style={{
-            border: "1px solid #e2e8f0",
-            borderRadius: "8px",
-            padding: "8px 16px",
-            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-            transition: "box-shadow 0.3s ease, border-color 0.3s ease",
-          }}
+          placeholder="Search pokemon by name"
+          className="w-full sm:w-1/2 px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-300"
         />
       </div>
+
       {/* Lista de Pokémon */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-8 bg-gradient-to-b from-white to-gray-100 p-6 rounded-lg shadow-md">
         {filteredPokemons.map((pokemon) => (
           <PokemonCard
             key={pokemon.name}
@@ -92,26 +87,28 @@ const PokemonList = () => {
           />
         ))}
       </div>
+
       {/* Paginación */}
       <div className="flex justify-between items-center mt-8">
         <button
           onClick={handlePrevPage}
-          className="bg-red-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-red-600"
+          className="bg-red-500 text-white px-6 py-2 rounded-lg shadow-md hover:bg-red-600 transition-all duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed"
           disabled={page === 1}
         >
           Previous
         </button>
-        <p className="text-center text-sm text-gray-300 font-medium">
-          Página {page} de {totalPages}
+        <p className="text-center text-sm text-gray-700 font-medium">
+          Page {page} of {totalPages}
         </p>
         <button
           onClick={handleNextPage}
-          className="bg-red-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-red-600"
+          className="bg-red-500 text-white px-6 py-2 rounded-lg shadow-md hover:bg-red-600 transition-all duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed"
           disabled={page === totalPages}
         >
           Next
         </button>
       </div>
+
       {/* Modal */}
       <ModalDetail selectedPokemon={selectedPokemon} closeModal={closeModal} />
     </div>
