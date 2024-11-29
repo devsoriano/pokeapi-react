@@ -13,18 +13,18 @@ const PokemonCard = ({ pokemon, onClick }) => {
 
   return (
     <div
-      className="bg-gradient-to-br from-gray-100 via-gray-200 to-white hover:from-gray-200 hover:via-gray-300 hover:to-white rounded-lg p-4 shadow-lg cursor-pointer transform hover:scale-105 transition-transform duration-200"
+      className="bg-gradient-to-br from-gray-100 via-gray-200 to-white hover:from-gray-200 hover:via-gray-300 hover:to-gray-100 rounded-lg p-4 shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300 ease-in-out hover:shadow-xl"
       onClick={onClick}
     >
       {/* Imagen del Pokémon */}
       <img
         src={pokemon.image_front}
         alt={pokemon.name}
-        className="w-full h-32 object-contain rounded-md shadow-sm"
+        className="w-full h-32 object-contain rounded-md shadow-sm hover:opacity-90 transition-opacity duration-300"
       />
 
       {/* Nombre del Pokémon */}
-      <h3 className="text-center font-bold text-lg mt-2 capitalize text-gray-800">
+      <h3 className="text-center font-bold text-lg mt-2 capitalize text-gray-800 hover:text-gray-900 transition-colors duration-300">
         {pokemon.name}
       </h3>
 
@@ -35,7 +35,7 @@ const PokemonCard = ({ pokemon, onClick }) => {
             key={type}
             className={`inline-block text-xs px-2 py-1 rounded-full mr-1 ${
               typeColors[type] || "bg-gray-300 text-gray-700"
-            }`}
+            } hover:scale-110 transition-transform duration-300`}
           >
             {type}
           </span>
