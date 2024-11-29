@@ -9,15 +9,26 @@ const CatalogsProvider = ({ children }) => {
   const [abilities, setAbilities] = useState([]);
 
   useEffect(() => {
-    const fetchPokemons = async () => {
+    const fetchAbilities = async () => {
       try {
-        const response = await apiClient.get(`/abilities`);
-        setAbilities(response.data);
+        // Verificar si ya existen datos en localStorage
+        const storedAbilities = localStorage.getItem("abilities");
+        if (storedAbilities) {
+          setAbilities(JSON.parse(storedAbilities)); // Si existen, usarlos
+        } else {
+          // Si no existen, llamar al servicio
+          const response = await apiClient.get(`/abilities`);
+          setAbilities(response.data);
+
+          // Guardar los datos en localStorage
+          localStorage.setItem("abilities", JSON.stringify(response.data));
+        }
       } catch (error) {
-        console.error("Error fetching Pokémon data:", error);
+        console.error("Error fetching Pokémon abilities:", error);
       }
     };
-    fetchPokemons();
+
+    fetchAbilities();
   }, []);
 
   return (
@@ -28,5 +39,4 @@ const CatalogsProvider = ({ children }) => {
 };
 
 export { CatalogsProvider };
-
 export default CatalogsContext;
