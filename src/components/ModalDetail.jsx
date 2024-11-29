@@ -11,13 +11,14 @@ const ModalDetail = ({ selectedPokemon, closeModal }) => {
     <Modal
       isOpen={!!selectedPokemon}
       onRequestClose={closeModal}
+      shouldCloseOnOverlayClick={false}
       contentLabel="Pokemon Details"
-      className="bg-gradient-to-br from-gray-100 to-white p-6 rounded-2xl shadow-xl max-w-xl w-full max-h-[80vh] mx-4 mt-20 overflow-y-auto border border-gray-300 relative"
-      overlayClassName="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center backdrop-blur-sm"
+      className="bg-gradient-to-br from-gray-100 to-white p-6 rounded-3xl shadow-2xl max-w-xl w-full max-h-[80vh] mx-4 mt-20 overflow-y-auto border border-gray-300 relative transition-transform duration-500 ease-out transform scale-95 open:scale-100"
+      overlayClassName="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center backdrop-blur-sm transition-opacity duration-500 ease-in-out"
       ariaHideApp={false}
     >
       {selectedPokemon && (
-        <div>
+        <div className="animate-fadeIn transition-opacity duration-500">
           {/* Botón de cerrar */}
           <button
             onClick={closeModal}
