@@ -64,14 +64,12 @@ const PokemonList = () => {
       {isLoading && <Loader />}
       <div className="max-w-7xl mx-auto px-4">
         {/* Encabezado */}
-        <div className="bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 p-6 rounded-lg shadow-lg mb-6">
-          <h1
-            className="text-6xl font-bold text-gray-700 text-center drop-shadow-md"
-            style={{ fontFamily: "'Bangers', cursive" }}
-          >
-            Pokédex Adventure
-          </h1>
-        </div>
+        <h1
+          className="mt-6 text-6xl font-bold text-gray-700 text-center drop-shadow-md"
+          style={{ fontFamily: "'Bangers', cursive" }}
+        >
+          Pokédex Adventure
+        </h1>
 
         {/* Barra de búsqueda */}
         <div className="flex justify-center mt-8">
