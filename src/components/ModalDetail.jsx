@@ -1,37 +1,11 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
+
 import Modal from "react-modal";
-import useCatalogs from "../hooks/useCatalogs";
+import { useSpecificInfo } from "../hooks/useSpecificInfo";
 
 const ModalDetail = ({ selectedPokemon, closeModal }) => {
-  const { abilities } = useCatalogs();
-  const [matchedAbilities, setMatchedAbilities] = useState([]);
-  const [visibleDetails, setVisibleDetails] = useState({});
-
-  useEffect(() => {
-    if (selectedPokemon) {
-      const pokemonAbilitiesIds = selectedPokemon.abilities;
-
-      const matched = abilities.filter((ability) =>
-        pokemonAbilitiesIds.includes(ability.id)
-      );
-
-      setMatchedAbilities(matched);
-
-      const initialVisibility = {};
-      matched.forEach((ability) => {
-        initialVisibility[ability.name] = false;
-      });
-      setVisibleDetails(initialVisibility);
-    }
-  }, [abilities, selectedPokemon]);
-
-  const toggleDetails = (abilityName) => {
-    setVisibleDetails((prev) => ({
-      ...prev,
-      [abilityName]: !prev[abilityName],
-    }));
-  };
+  const { matchedAbilities, visibleDetails, toggleDetails } =
+    useSpecificInfo(selectedPokemon);
 
   return (
     <Modal
