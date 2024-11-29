@@ -10,9 +10,6 @@ const ModalDetail = ({ selectedPokemon, closeModal }) => {
 
   useEffect(() => {
     if (selectedPokemon) {
-      console.log({ selectedPokemon });
-      console.log({ abilities });
-
       // Obtenemos los IDs de las habilidades del Pokémon seleccionado
       const pokemonAbilitiesIds = selectedPokemon.abilities;
 
