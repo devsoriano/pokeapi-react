@@ -11,8 +11,9 @@ const CatalogsProvider = ({ children }) => {
   useEffect(() => {
     const fetchPokemons = async () => {
       try {
-        const response = await apiClient.get(`/get-abilities`);
-        setAbilities(response.data.abilities);
+        const response = await apiClient.get(`/abilities`);
+        console.log({ response });
+        setAbilities(response.data);
       } catch (error) {
         console.error("Error fetching Pokémon data:", error);
       }

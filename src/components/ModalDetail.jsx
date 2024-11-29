@@ -10,12 +10,21 @@ const ModalDetail = ({ selectedPokemon, closeModal }) => {
 
   useEffect(() => {
     if (selectedPokemon) {
-      const pokemonAbilities = selectedPokemon.abilities.split(",");
+      console.log({ selectedPokemon });
+      console.log({ abilities });
+
+      // Obtenemos los IDs de las habilidades del Pokémon seleccionado
+      const pokemonAbilitiesIds = selectedPokemon.abilities;
+
+      // Filtramos las habilidades que coinciden con los IDs del Pokémon
       const matched = abilities.filter((ability) =>
-        pokemonAbilities.includes(ability.name)
+        pokemonAbilitiesIds.includes(ability.id)
       );
+
+      // Actualizamos el estado con las habilidades coincidentes
       setMatchedAbilities(matched);
 
+      // Inicializamos el estado de visibilidad para cada habilidad
       const initialVisibility = {};
       matched.forEach((ability) => {
         initialVisibility[ability.name] = false;

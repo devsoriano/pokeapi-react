@@ -15,7 +15,7 @@ const PokemonList = () => {
   useEffect(() => {
     const fetchPokemons = async () => {
       try {
-        const response = await apiClient.get(`/get-pokemons/?page=${page}`);
+        const response = await apiClient.get(`/pokemons/?page=${page}`);
         setPokemons(response.data.results);
         setFilteredPokemons(response.data.results); // Inicializamos con todos
         setTotalPages(response.data.total_pages);
