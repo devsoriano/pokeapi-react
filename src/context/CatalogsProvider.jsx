@@ -18,10 +18,10 @@ const CatalogsProvider = ({ children }) => {
         } else {
           // Si no existen, llamar al servicio
           const response = await apiClient.get(`/abilities`);
-          setAbilities(response.data);
+          setAbilities(response);
 
           // Guardar los datos en localStorage
-          localStorage.setItem("abilities", JSON.stringify(response.data));
+          localStorage.setItem("abilities", JSON.stringify(response));
         }
       } catch (error) {
         console.error("Error fetching Pokémon abilities:", error);

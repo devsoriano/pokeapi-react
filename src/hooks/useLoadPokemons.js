@@ -16,9 +16,10 @@ export const useLoadPokemons = () => {
       setIsLoading(true);
       try {
         const response = await apiClient.get(`/pokemons/?page=${page}`);
-        setPokemons(response.data.results);
-        setFilteredPokemons(response.data.results);
-        setTotalPages(response.data.total_pages);
+        console.log({ response });
+        setPokemons(response.results);
+        setFilteredPokemons(response.results);
+        setTotalPages(response.total_pages);
       } catch (error) {
         console.error("Error fetching Pokémon data:", error);
       } finally {
