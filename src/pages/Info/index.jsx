@@ -5,17 +5,17 @@ export const Info = () => {
     <Layout>
       <div className="max-w-4xl mx-auto px-6 py-12">
         <h1 className="text-4xl font-bold text-center text-gray-800 mb-6 tracking-wide">
-          Welcome to Pokédex Adventure!
+          Welcome to Poke Adventure!
         </h1>
         <p className="text-lg text-gray-700 leading-relaxed mb-4">
-          Pokédex Adventure is your ultimate guide to the Pokémon world. Explore
+          Poke Adventure is your ultimate guide to the Pokémon world. Explore
           detailed information about your favorite Pokémon, their abilities,
           types, and much more. Dive into a collection designed for enthusiasts
           and trainers alike!
         </p>
         <p className="text-lg text-gray-700 leading-relaxed mb-4">
           Whether you're preparing for a battle, studying type advantages, or
-          simply enjoying the nostalgia of these iconic creatures, Pokédex
+          simply enjoying the nostalgia of these iconic creatures, Poke
           Adventure is here to enhance your journey.
         </p>
         <p className="text-lg text-gray-700 leading-relaxed mb-4">
