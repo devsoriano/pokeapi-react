@@ -6,7 +6,7 @@ function App() {
     <div
       className="min-h-screen p-4"
       style={{
-        background: "linear-gradient(to bottom, #f8f9fa, #e9ecef)",
+        background: "linear-gradient(to bottom, #f2f2f2, #8e8e8e)",
         minHeight: "100vh",
       }}
     >
