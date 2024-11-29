@@ -23,7 +23,7 @@ const PokemonList = () => {
       {isLoading && <Loader />}
       <>
         {/* Barra de búsqueda */}
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center mt-4">
           <input
             type="text"
             value={searchTerm}
@@ -34,7 +34,7 @@ const PokemonList = () => {
         </div>
 
         {/* Lista de Pokémon */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-8 bg-gradient-to-b from-white to-gray-100 p-6 rounded-lg shadow-md">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-8 bg-gradient-to-b from-white to-gray-100 p-4 rounded-lg shadow-md">
           {filteredPokemons.map((pokemon) => (
             <PokemonCard
               key={pokemon.name}
