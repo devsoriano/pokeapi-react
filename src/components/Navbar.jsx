@@ -26,7 +26,7 @@ const Navbar = () => {
 
           {/* Opciones del menú alineadas a la derecha */}
           <ul className="flex items-center gap-5">
-            <li className="text-lg">
+            {/* <li className="text-lg">
               <NavLink
                 to="/"
                 className={({ isActive }) =>
@@ -37,7 +37,7 @@ const Navbar = () => {
               >
                 Pokedex
               </NavLink>
-            </li>
+            </li> */}
             <li className="text-lg">
               <NavLink
                 to="/info"
